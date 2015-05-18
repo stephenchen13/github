@@ -16,10 +16,14 @@ module Github
       commit_message
       mime_type
       resource
+      sort
+      direction
     ].freeze
 
     VALID_REQUEST_PARAM_VALUES = {
-      'state' => %w[ open closed all ]
+      'state' => %w[ open closed all ],
+      'sort' => %w[ created updated popularity long-running ],
+      'direction' => %w[ asc desc ]
     }
 
     # Access to PullRequests::Comments API
@@ -68,7 +72,7 @@ module Github
     # Create a pull request
     #
     # @param [Hash] params
-    # @option params [String] :title 
+    # @option params [String] :title
     #   Required string
     # @option params [String] :body
     #   Optional string
